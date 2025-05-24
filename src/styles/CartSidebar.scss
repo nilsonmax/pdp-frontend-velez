@@ -1,0 +1,125 @@
+.cart-icon {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  padding: 0.75rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 320px;
+  height: 100vh;
+  background: white;
+  padding: 1rem;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+
+  /* Transición de entrada/salida */
+  transform: translateX(0%);
+  transition: transform 0.3s ease-in-out;
+
+  /* Bloquea el desbordamiento */
+  overflow: hidden;
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+
+    li {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        flex-shrink: 0;
+      }
+
+      div {
+        flex: 1;
+        min-width: 0;
+
+        p {
+          margin: 0.25rem 0;
+          font-size: 0.85rem;
+          word-break: break-word;
+        }
+
+        button {
+          background: none;
+          border: none;
+          color: red;
+          cursor: pointer;
+          font-size: 0.75rem;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .cart-total {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .checkout-btn {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: black;
+    color: white;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+  }
+}
+
+.cart-sidebar-hidden {
+  transform: translateX(100%);
+}
+
+/* Capa oscura detrás del carrito */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+  display: none;
+}
+
+.cart-overlay.active {
+  display: block;
+}
+
+/* Adaptación total a móvil */
+@media (max-width: 600px) {
+  .cart-sidebar {
+    width: 100%;
+    max-width: 100%;
+    border-left: none;
+    border-top: 1px solid #ccc;
+  }
+}
+

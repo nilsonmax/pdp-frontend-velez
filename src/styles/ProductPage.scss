@@ -1,0 +1,123 @@
+.product-page {
+  padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+    }
+  }
+
+  .sizes {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+
+    button {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      background: white;
+
+      &.active {
+        border-color: #000;
+        background: #f0f0f0;
+      }
+    }
+  }
+
+  .price {
+    margin-top: 1rem;
+
+    .full {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+
+    .discount {
+      color: green;
+      font-weight: bold;
+    }
+  }
+
+  .add-to-cart {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.related-products {
+  margin-top: 3rem;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .related-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .related-card {
+    background: #fff;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      object-position:bottom; // <- Esto alinea la imagen hacia abajo
+      border-radius: 0.5rem;
+    }
+
+    p {
+      margin: 0.25rem 0;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .related-brand {
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    .related-price {
+      font-size: 0.95rem;
+      font-weight: bold;
+      color: #1a8917;
+    }
+  }
+}
+
