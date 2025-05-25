@@ -7,9 +7,15 @@ export interface Product {
     images: {
       imageUrl: string;
     }[];
+    Talla:string[];
+    Color:string[];
+    sellers: {
+      commertialOffer: {
+        Price: number;
+        PriceWithoutDiscount: number;
+      };
+    }[];
   }[];
   price: number;
   discountedPrice: number;
-  color?: string;
-  sizes?: string[];
 }

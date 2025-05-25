@@ -34,6 +34,9 @@ export default function CartSidebar() {
                     <div>
                       <p>{item.productName}</p>
                       <p>${item.price} x {item.quantity}</p>
+                      {/* <p>Talla: {item.size}</p>
+                      <p>Color: <span className="color-preview" style={{ backgroundColor: item.color }}></span></p> */}
+
                       <button onClick={() => removeFromCart(item.productId)}>Eliminar</button>
                     </div>
                   </li>
