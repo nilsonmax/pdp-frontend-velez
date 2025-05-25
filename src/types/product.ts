@@ -3,6 +3,9 @@ export interface Product {
   productName: string;
   brand: string;
   productReference: string;
+  description: string;
+  "MATERIAL EXTERNO"?: string[];
+  "CARACTERÍSTICAS"?: string[];
   items: {
     images: {
       imageUrl: string;
@@ -16,6 +19,4 @@ export interface Product {
       };
     }[];
   }[];
-  price: number;
-  discountedPrice: number;
 }

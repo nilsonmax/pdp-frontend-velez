@@ -2,6 +2,12 @@
   padding: 2rem;
   max-width: 960px;
   margin: 0 auto;
+  // overflow-x: hidden;
+
+ // Estilos para móviles
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 
   h1 {
     font-size: 2rem;
@@ -75,11 +81,18 @@
   flex-wrap: wrap;
   padding: 2rem;
 
+   // Estilos para móviles
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
+
   .image-gallery {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     position: relative;
+    margin: 0 auto;
+  
 
     .main-image {
       position: relative;
@@ -139,7 +152,7 @@
       }
     }
   }
-
+ 
   .product-info {
     flex: 1 1 400px;
     display: flex;
@@ -255,7 +268,8 @@
     }
 
     .image-wrapper {
-      height: 180px;
+      // height: 50%;
+      height: 210px;
       overflow: hidden;
 
       img {
@@ -393,4 +407,12 @@
     opacity: 0;
     transform: translateY(10px);
   }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.product-page {
+  overflow-x: hidden;
 }

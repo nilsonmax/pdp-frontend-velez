@@ -1,0 +1,30 @@
+.accordion {
+  margin-bottom: 1rem;
+
+  .accordion-header {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.75rem;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: #e5e5e5;
+    }
+  }
+
+  .accordion-content {
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #eee;
+    border-top: none;
+    border-radius: 0 0 0.5rem 0.5rem;
+    font-size: 0.95rem;
+  }
+}

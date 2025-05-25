@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../styles/ProductPage.scss";
 import { Product } from "../types/product";
 import { useCart } from "../context/CartContext";
+import Accordion from "../components/Accordion";
 
 type ColorOption = {
   name: string;
@@ -27,12 +28,14 @@ export default function ProductPage() {
   //efecto fade para dar un toque sutil a la galeria
   const [fade, setFade] = useState(false);
 
+  // Acordeon para mostrar descripcion
+  const [showDetails, setShowDetails] = useState(false);
+
   // mensajes
   const [toast, setToast] = useState<{
     message: string;
     type: "success" | "warning";
   } | null>(null);
-  // const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const showToast = (message: string, type: "success" | "warning") => {
     setToast({ message, type });
@@ -69,19 +72,30 @@ export default function ProductPage() {
   };
 
   useEffect(() => {
-    fetch(
-      "https://api-prueba-frontend-production.up.railway.app/api/products/productId/125829257"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-          setProduct(data[0]);
-        } else {
-          console.error("No se encontró producto válido en la API.");
-        }
-      })
-      .catch((err) => console.error("Error al cargar producto:", err));
-  }, []);
+  const fetchProduct = async () => {
+    try {
+      const response = await fetch(
+        "https://api-prueba-frontend-production.up.railway.app/api/products/productId/125829257"
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (Array.isArray(data) && data.length > 0) {
+        setProduct(data[0]);
+      } else {
+        console.warn("No se encontró un producto válido en la respuesta.");
+      }
+    } catch (error) {
+      console.error("Error al cargar producto:", error);
+    }
+  };
+
+  fetchProduct();
+}, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -95,7 +109,7 @@ export default function ProductPage() {
         const data = await res.json();
 
         if (Array.isArray(data) && data.length > 0) {
-          setRelatedProducts(data.slice(0, 5));
+          setRelatedProducts(data.slice(0, 4));
         } else {
           console.warn("No se recibieron productos válidos.");
         }
@@ -129,13 +143,6 @@ export default function ProductPage() {
     setSelectedColor((prev) => (prev === colorValue ? null : colorValue));
   };
 
-  // const getColorName = (colorValue: string): string => {
-  //   const entry = Object.entries(colorMap).find(
-  //     ([, value]) => value === colorValue
-  //   );
-  //   return entry ? entry[0] : "Otro";
-  // };
-
   const colors: ColorOption[] = simulatedColor
     .map((colorName: string) => {
       const value = colorMap[colorName];
@@ -144,7 +151,16 @@ export default function ProductPage() {
     })
     .filter(Boolean) as ColorOption[]; // Elimina los nulos
 
-  console.log("Producto:", Sizes); // 👈 Aquí ves la estructura del objeto
+ 
+function renderCaracteristicas(texto: string | undefined): React.ReactNode {
+  if (!texto) return null;
+
+  const lineas = texto.split('<br>');
+
+  return lineas.map((linea, index) => (
+    <p key={index}>{linea.trim()}</p>
+  ));
+}
 
   return (
     <div className="product-page">
@@ -262,10 +278,6 @@ export default function ProductPage() {
                 />
               ))}
             </div>
-
-            {/* {selectedColor && (
-              <p>Color seleccionado: {getColorName(selectedColor)}</p>
-            )} */}
           </div>
 
           {/* ----------------------------- */}
@@ -275,6 +287,23 @@ export default function ProductPage() {
           </button>
         </div>
       </div>
+
+      {/* --------------------------------------------- */}
+      <Accordion title="Descripción">
+        <p>{product.description}</p>
+      </Accordion>
+
+      <Accordion title="Características técnicas">
+        <ul>
+          <li>Características:
+          {renderCaracteristicas(product["CARACTERÍSTICAS"]?.[0])}
+          </li>
+          <li>Marca: {product.brand}</li>
+          <li>Referencia: {product.productReference}</li>
+          <li>Material: {product["MATERIAL EXTERNO"]}</li>
+        </ul>
+      </Accordion>
+      {/* --------------------------------------------- */}
 
       {/* Productos relacionados */}
       <div className="related-products">
