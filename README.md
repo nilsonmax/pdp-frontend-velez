@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# 🛍️ PDP - Página de Detalle de Producto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es una prueba técnica para la vacante de **Analista Frontend**, centrada en construir una Página de Detalle de Producto (PDP) profesional utilizando React y TypeScript. El enfoque está en la experiencia de usuario, diseño visual y funcionalidad realista de e-commerce.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Tecnologías utilizadas
 
-### `npm start`
+- ⚛️ React + TypeScript
+- 🎨 Sass (SCSS)
+- 🛒 Context API + LocalStorage para carrito persistente
+- 🌐 Fetch API para consumo de datos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## ✨ Funcionalidades implementadas
 
-### `npm test`
+- Visualización de todas las imágenes del producto con miniaturas
+- Galería con navegación entre imágenes (← →)
+- Selección interactiva de talla y color
+- Visualización de precio original y con descuento
+- Validación antes de agregar al carrito
+- Carrito de compras:
+  - Sumar/restar cantidad
+  - Eliminar productos
+  - Cálculo automático de total
+- Componentes reutilizables:
+  - Acordeón para descripción y características técnicas
+- Toasts visuales para feedback de usuario
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🔗 Demo en producción
+👉 [Ver deploy en Vercel]()
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📂 Estructura del proyecto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+├── components/
+│   └── Accordion.tsx
+├── context/
+│   └── CartContext.tsx
+├── styles/
+│   ├── ProductPage.scss
+│   ├── CartSidebar.scss
+│   └── Accordion.scss
+├── types/
+│   └── product.ts
+├── App.tsx
+├── main.tsx
+└── README.md
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 👨‍💻 Autor
+Nilson Max
+Frontend Developer
+GitHub: @tu-usuario
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 📦 Cómo ejecutar el proyecto localmente
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone https://github.com/nilsonmax/pdp-frontend-velez.git
+cd pdp-velez
+npm install
+npm run dev
