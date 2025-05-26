@@ -4,7 +4,7 @@
   margin: 0 auto;
   // overflow-x: hidden;
 
- // Estilos para móviles
+  // Estilos para móviles
   @media (max-width: 768px) {
     padding: 0;
   }
@@ -47,11 +47,11 @@
   }
 
   .price {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  // margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    // margin-top: 1rem;
 
     .full {
       text-decoration: line-through;
@@ -81,7 +81,7 @@
   flex-wrap: wrap;
   padding: 2rem;
 
-   // Estilos para móviles
+  // Estilos para móviles
   @media (max-width: 768px) {
     padding: 0.5rem;
   }
@@ -92,7 +92,6 @@
     gap: 1rem;
     position: relative;
     margin: 0 auto;
-  
 
     .main-image {
       position: relative;
@@ -152,7 +151,7 @@
       }
     }
   }
- 
+
   .product-info {
     flex: 1 1 400px;
     display: flex;

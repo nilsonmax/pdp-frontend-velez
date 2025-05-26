@@ -68,12 +68,12 @@
         }
 
         button {
-          background: none;
+          // background: none;
           border: none;
           color: red;
           cursor: pointer;
           font-size: 0.75rem;
-          padding: 0;
+          padding: 2px;
         }
       }
     }
@@ -123,3 +123,27 @@
   }
 }
 
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+
+  button {
+    background: #eee;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background: #ccc;
+    }
+  }
+
+  span {
+    min-width: 1.5rem;
+    text-align: center;
+  }
+}

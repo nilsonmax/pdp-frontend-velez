@@ -8,10 +8,6 @@ export default function CartSidebar() {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const removeFromCart = (id: string) => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: id });
-  };
-
   return (
     <>
       <div className="cart-icon" onClick={() => setOpen(!open)}>
@@ -19,37 +15,77 @@ export default function CartSidebar() {
       </div>
 
       {open && (
-          <div className={`cart-overlay ${open ? "active" : ""}`} onClick={() => setOpen(false)}>
-    <div className={`cart-sidebar ${!open ? "cart-sidebar-hidden" : ""}`} onClick={(e) => e.stopPropagation()}>
-  
-          <h2>Carrito de compras</h2>
-          {cart.length === 0 ? (
-            <p>Tu carrito está vacío.</p>
-          ) : (
-            <>
-              <ul>
-                {cart.map((item) => (
-                  <li key={item.productId}>
-                    <img src={item.image} alt={item.productName} />
-                    <div>
-                      <p>{item.productName}</p>
-                      <p>${item.price} x {item.quantity}</p>
-                      {/* <p>Talla: {item.size}</p>
-                      <p>Color: <span className="color-preview" style={{ backgroundColor: item.color }}></span></p> */}
+        <div
+          className={`cart-overlay ${open ? "active" : ""}`}
+          onClick={() => setOpen(false)}
+        >
+          <div
+            className={`cart-sidebar ${!open ? "cart-sidebar-hidden" : ""}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>Carrito de compras</h2>
 
-                      <button onClick={() => removeFromCart(item.productId)}>Eliminar</button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <div className="cart-total">
-                <strong>Total: ${total.toFixed(2)}</strong>
-              </div>
-              <button className="checkout-btn">Finalizar compra</button>
-            </>
-          )}
+            {cart.length === 0 ? (
+              <p>Tu carrito está vacío.</p>
+            ) : (
+              <>
+                <ul>
+                  {cart.map((item) => (
+                    <li key={item.productId}>
+                      <img src={item.image} alt={item.productName} />
+
+                      <div>
+                        <p>{item.productName}</p>
+                        <p>Precio: ${item.price}</p>
+
+                        <div className="quantity-controls">
+                          <button
+                            onClick={() =>
+                              dispatch({
+                                type: "DECREMENT_ITEM",
+                                payload: item.productId,
+                              })
+                            }
+                          >
+                            −
+                          </button>
+                          <span>{item.quantity}</span>
+                          <button
+                            onClick={() =>
+                              dispatch({
+                                type: "INCREMENT_ITEM",
+                                payload: item.productId,
+                              })
+                            }
+                          >
+                            +
+                          </button>
+                        <button
+                          onClick={() =>
+                            dispatch({
+                              type: "REMOVE_FROM_CART",
+                              payload: item.productId,
+                            })
+                          }
+                        >
+                          🗑️ Eliminar
+                        </button>
+                        </div>
+
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="cart-total">
+                  <strong>Total: ${total.toFixed(2)}</strong>
+                </div>
+
+                <button className="checkout-btn">Finalizar compra</button>
+              </>
+            )}
+          </div>
         </div>
-    </div>
       )}
     </>
   );

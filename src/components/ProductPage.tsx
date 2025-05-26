@@ -72,30 +72,30 @@ export default function ProductPage() {
   };
 
   useEffect(() => {
-  const fetchProduct = async () => {
-    try {
-      const response = await fetch(
-        "https://api-prueba-frontend-production.up.railway.app/api/products/productId/125829257"
-      );
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(
+          "https://api-prueba-frontend-production.up.railway.app/api/products/productId/125829257"
+        );
 
-      if (!response.ok) {
-        throw new Error(`Error HTTP: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`Error HTTP: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (Array.isArray(data) && data.length > 0) {
+          setProduct(data[0]);
+        } else {
+          console.warn("No se encontró un producto válido en la respuesta.");
+        }
+      } catch (error) {
+        console.error("Error al cargar producto:", error);
       }
+    };
 
-      const data = await response.json();
-
-      if (Array.isArray(data) && data.length > 0) {
-        setProduct(data[0]);
-      } else {
-        console.warn("No se encontró un producto válido en la respuesta.");
-      }
-    } catch (error) {
-      console.error("Error al cargar producto:", error);
-    }
-  };
-
-  fetchProduct();
-}, []);
+    fetchProduct();
+  }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -151,16 +151,13 @@ export default function ProductPage() {
     })
     .filter(Boolean) as ColorOption[]; // Elimina los nulos
 
- 
-function renderCaracteristicas(texto: string | undefined): React.ReactNode {
-  if (!texto) return null;
+  function renderCaracteristicas(texto: string | undefined): React.ReactNode {
+    if (!texto) return null;
 
-  const lineas = texto.split('<br>');
+    const lineas = texto.split("<br>");
 
-  return lineas.map((linea, index) => (
-    <p key={index}>{linea.trim()}</p>
-  ));
-}
+    return lineas.map((linea, index) => <p key={index}>{linea.trim()}</p>);
+  }
 
   return (
     <div className="product-page">
@@ -295,8 +292,9 @@ function renderCaracteristicas(texto: string | undefined): React.ReactNode {
 
       <Accordion title="Características técnicas">
         <ul>
-          <li>Características:
-          {renderCaracteristicas(product["CARACTERÍSTICAS"]?.[0])}
+          <li>
+            Características:
+            {renderCaracteristicas(product["CARACTERÍSTICAS"]?.[0])}
           </li>
           <li>Marca: {product.brand}</li>
           <li>Referencia: {product.productReference}</li>
