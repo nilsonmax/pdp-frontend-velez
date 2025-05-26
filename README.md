@@ -31,7 +31,7 @@ Este proyecto es una prueba técnica para la vacante de **Analista Frontend**, c
 ---
 
 ## 🔗 Demo en producción
-👉 [Ver deploy en Vercel]()
+👉 [Ver deploy en Vercel](https://pdp-frontend-velez.vercel.app/)
 
 
 ## 📂 Estructura del proyecto
@@ -55,7 +55,7 @@ Este proyecto es una prueba técnica para la vacante de **Analista Frontend**, c
 ## 👨‍💻 Autor
 Nilson Max
 Frontend Developer
-GitHub: @tu-usuario
+GitHub: @nilsonmax
 
 ---
 
